@@ -12,7 +12,7 @@ type IndexViewModel struct {
 }
 
 // IndexViewModelOp struct
-type IndexViewModelOp struct{}
+type IndexViewModelOp struct {}
 
 // GetVM func
 func (IndexViewModelOp) GetVM() IndexViewModel {
@@ -24,6 +24,6 @@ func (IndexViewModelOp) GetVM() IndexViewModel {
 		model.Post{User: u2, Body: "The Avengers movie was so cool!"},
 	}
 
-	v := IndexViewModel{BaseViewModel{Title: "Homepage"}, u1, posts}
+	v := IndexViewModel{BaseViewModel{Title: "Homepage"}, User: u1, posts}
 	return v
 }

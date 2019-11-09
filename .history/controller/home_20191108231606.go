@@ -26,12 +26,12 @@ func check(username, password string) bool {
 	return false
 }
 
-func loginHandler(w http.ResponseWriter, r *http.Request) {
+func loginHandler(w http.responseWriter, r *http.Request) {
 	tpName := "login.html"
 	vop := vm.LoginViewModelOp{}
 	v := vop.GetVM()
 
-	if r.Method == http.MethodGet {
+	if r.method == http.MethodGet {
 		templates[tpName].Execute(w, &w)
 	}
 	if r.Method == http.MethodPost {

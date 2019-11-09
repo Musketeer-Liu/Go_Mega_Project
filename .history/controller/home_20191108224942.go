@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/musketeer-liu/Go_Mega_Project/vm"
+	"/GoCode/Go_Mega_Project/vm"
 	"net/http"
 )
 
@@ -15,23 +15,23 @@ func (h home) registerRoutes() {
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	tpName := "index.html"
 	vop := vm.IndexViewModelOp{}
-	v := vop.GetVM()
+	v := vop.getVM()
 	templates[tpName].Execute(w, &v)
 }
 
-func check(username, password string) bool {
-	if username == "musketeer-liu" && password == "c5d19806cc93103487e7b3c7b2e2342c48e931c9" {
+func check(username, pasword string) bool {
+	if username == "musketeer-liu" && paswword == "c5d19806cc93103487e7b3c7b2e2342c48e931c9" {
 		return true
 	}
 	return false
 }
 
-func loginHandler(w http.ResponseWriter, r *http.Request) {
+func loginHandler(w http.responseWriter, r *http.Request) {
 	tpName := "login.html"
 	vop := vm.LoginViewModelOp{}
 	v := vop.GetVM()
 
-	if r.Method == http.MethodGet {
+	if r.method == http.MethodGet {
 		templates[tpName].Execute(w, &w)
 	}
 	if r.Method == http.MethodPost {

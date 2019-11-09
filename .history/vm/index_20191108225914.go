@@ -12,7 +12,7 @@ type IndexViewModel struct {
 }
 
 // IndexViewModelOp struct
-type IndexViewModelOp struct{}
+type IndexViewModelOp struct {}
 
 // GetVM func
 func (IndexViewModelOp) GetVM() IndexViewModel {

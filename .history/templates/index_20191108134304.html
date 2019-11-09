@@ -1,0 +1,15 @@
+<html>
+    <head>
+        {{if .Title}}
+            <title>Home Page - Musketeer</title>
+        {{else}}
+            <title>Welcome to blog!</title>\
+        {{end}}
+    </head>
+    <body>
+        <h1>Hello, {{.User.Username}}!</h1>
+        {{range .Posts}}
+            <div><p>{{ .User.Username }} says: <b
+        {{end}}
+    </body>
+</html>

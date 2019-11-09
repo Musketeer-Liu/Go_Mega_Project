@@ -22,23 +22,21 @@ func PopulateTemplates() map[string]*template.Template {
 		panic("Failed to read contents of content directory: " + err.Error())
 	}
 	for _, fi := range fis {
-		func() {
-			f, err := os.Open(basePath + "/content/" + fi.Name())
-			if err != nil {
-				panic("Failed to open template '" + fi.Name() + "'")
-			}
-			defer f.Close()
-			content, err := ioutil.ReadAll(f)
-			if err != nil {
-				panic("Failed to read content from file '" + fi.Name() + "'")
-			}
-			tmpl := template.Must(layout.Clone())
-			_, err = tmpl.Parse(string(content))
-			if err != nil {
-				panic("Failed to parse contents of '" + fi.Name() + "' as template")
-			}
-			result[fi.Name()] = tmpl
-		}()
-	}
+		f, err := os.Open(basePath + "/content/" + fi.Name())
+		if err != nil {
+			panic("Failed to open template '" + fi.Name() + "'")
+		}
+		content, err := ioutil.ReadAll(f)
+		if err != nil {
+			panic("Failed to read content from file '" + fi.Name() + "'")
+		}
+		_ = f.Close()
+		tmpl := template.Must(layout.Clone())
+		_, err = tmpl.Parse(string(content))
+		if err != nil {
+			panic("Failed to parse contents of '" + fi.Name() + "' as template")
+		}
+		result[fi.Name()] = tmpl
+		}
 	return result
 }

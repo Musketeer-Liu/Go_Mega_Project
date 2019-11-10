@@ -1,8 +1,24 @@
 package model
 
+import (
+	"time"
+)
+
 // Post struct
 type Post struct {
-	User // 这里可以采用匿名简化 不用写User User HTML模板中也可以不用再写.User了
-	// User User
-	Body string
+	ID				int			`gorm:"primary_key"`
+	UserID			int
+	//User // 这里可以采用匿名简化 不用写User User HTML模板中也可以不用再写.User了
+	User 			User
+	Body 			string		`gorm:"type:varchar(180)"`
+	Timestamp		*time.Time	`sql:"DEFAULT:current_timestamp"`
+}
+
+// GetPostsByUserId func
+func GetPostsByUserID(id int) (*[]Post, error) {
+	var posts []Post
+	if err := db.Preload("User").Where("user_id=?", id).Find(&posts).Error; err != nil {
+		return nil, err
+	}
+	return &posts, nil
 }

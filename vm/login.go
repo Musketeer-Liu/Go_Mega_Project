@@ -1,5 +1,11 @@
 package vm
 
+import (
+	"log"
+
+	"github.com/musketeer-liu/Go_Mega_Project/model"
+)
+
 // LoginViewModel struct
 type LoginViewModel struct {
 	BaseViewModel
@@ -19,4 +25,15 @@ func (LoginViewModelOp) GetVM() LoginViewModel {
 // AddError func
 func (v *LoginViewModel) AddError(errs ...string) {
 	v.Errs = append(v.Errs, errs...)
+}
+
+// CheckLogin func
+func CheckLogin(username, password string) bool {
+	user, err := model.GetUserByUsername(username)
+	if err != nil {
+		log.Println("Cannot find username: ", username)
+		log.Println("Error", err)
+		return false
+	}
+	return user.CheckPassword(password)
 }

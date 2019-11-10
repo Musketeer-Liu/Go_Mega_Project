@@ -1,21 +1,21 @@
 package main
 
 import (
-	"net/http"
-
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/musketeer-liu/Go_Mega_Project/controller"
 	"github.com/musketeer-liu/Go_Mega_Project/model"
+
+	"log"
 )
 
 func main() {
-	// Setup DB
+	log.Println("DB Init ...")
 	db := model.ConnectToDB()
 	defer db.Close()
 	model.SetDB(db)
 
-	// Setup Controller
-	controller.Startup()
-
-	http.ListenAndServe(":8888", nil)
+	db.DropTableIfExists(model.User{}, model.Post{})
+	db.CreateTable(model.User{}, model.Post{})
 }
+
+
+

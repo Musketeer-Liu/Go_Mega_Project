@@ -1,8 +1,9 @@
 package controller
 
 import (
-	"github.com/musketeer-liu/Go_Mega_Project/vm"
 	"net/http"
+
+	"github.com/musketeer-liu/Go_Mega_Project/vm"
 )
 
 type home struct {}

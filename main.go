@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -17,5 +18,6 @@ func main() {
 	// Setup Controller
 	controller.Startup()
 
+	fmt.Print("stating ...")
 	http.ListenAndServe(":8888", nil)
 }

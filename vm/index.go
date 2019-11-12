@@ -24,7 +24,7 @@ func (IndexViewModelOp) GetVM() IndexViewModel {
 	//// Hard Code
 	//u1 := model.User{Username: "Musketeer"}
 	//u2 := model.User{Username: "Paladin"}
-
+	//
 	//posts := []model.Post{
 	//	model.Post{User: u1, Body: "Beautiful day in Portland!"},
 	//	model.Post{User: u2, Body: "The Avengers movie was so cool!"},

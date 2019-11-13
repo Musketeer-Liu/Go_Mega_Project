@@ -6,6 +6,15 @@ type BaseViewModel struct {
 	CurrentUser	string
 }
 
+// BasePageViewModel struct
+type BasePageViewModel struct {
+	PrevPage	int
+	NextPage	int
+	Total		int
+	CurrentPage	int
+	Limit		int
+}
+
 // SetTitle func
 func (v *BaseViewModel) SetTitle(title string) {
 	v.Title = title
@@ -16,11 +25,20 @@ func (v *BaseViewModel) SetCurrentUser(username string) {
 	v.CurrentUser= username
 }
 
-//// 由于_base.html 基础模板中有 Title 字段，所以 Title是每个view都必有的字段，
-//// 我们将它单独设成个 BaseViewStruct，方便用 匿名组合
-//// Deprecated IndexViewModel struct
-//type BaseViewModel struct {
-//	Title string
-//	User
-//	Posts []Post
-//}
+// SetPrevAndNextPage func
+func (v *BasePageViewModel) SetPrevAndNextPage() {
+	if v.CurrentPage > 1 {
+		v.PrevPage = v.CurrentPage - 1
+	}
+	if (v.Total-1) / v.Limit >= v.CurrentPage {
+		v.NextPage = v.CurrentPage + 1
+	}
+}
+
+// SetBasePageViewModel func
+func (v *BasePageViewModel) SetBasePageViewModel(total, page, limit int) {
+	v.Total = total
+	v.CurrentPage = page
+	v.Limit = limit
+	v.SetPrevAndNextPage()
+}

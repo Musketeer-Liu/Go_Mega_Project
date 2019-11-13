@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strconv"
 
 	"github.com/musketeer-liu/Go_Mega_Project/vm"
 )
@@ -189,7 +190,27 @@ func checkRegister(username, email, pwd1, pwd2 string) []string {
 	return errs
 }
 
-// Add User
+// Add User func
 func addUser(username, password, email string) error {
 	return vm.AddUser(username, password, email)
 }
+
+// Get Page func
+func getPage(r *http.Request) int {
+	url := r.URL
+	query := url.Query()
+
+	q := query.Get("page")
+	if q == "" {
+		return 1
+	}
+
+	page, err := strconv.Atoi(q)
+	if err != nil {
+		return 1
+	}
+	return page
+}
+
+
+

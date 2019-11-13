@@ -6,8 +6,13 @@
       <change beforePath="$PROJECT_DIR$/controller/g.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/g.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/home.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/utils.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/post.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/content/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/content/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/content/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/content/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vm/g.go" beforeDir="false" afterPath="$PROJECT_DIR$/vm/g.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vm/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/vm/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vm/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/vm/profile.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

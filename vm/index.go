@@ -7,7 +7,8 @@ import (
 // IndexViewModel struct
 type IndexViewModel struct {
 	BaseViewModel
-	Posts []model.Post
+	Posts			[]model.Post
+	Flash			string
 }
 
 // IndexViewModelOp struct
@@ -15,12 +16,19 @@ type IndexViewModelOp struct{}
 
 // GetVM func
 // V3: Add middleware of User Auth
-func (IndexViewModelOp) GetVM(username string) IndexViewModel {
-	u1, _ := model.GetUserByUsername(username)
-	posts, _ := model.GetPostsByUserID(u1.ID)
-	v := IndexViewModel{BaseViewModel{Title: "Homepage"}, *posts}
+func (IndexViewModelOp) GetVM(username string, flash string) IndexViewModel {
+	u, _ := model.GetUserByUsername(username)
+	// 顺便将 IndexView 里的 Posts 改成 CurrentUser 的 FollowingPosts
+	posts, _ := u.FollowingPosts()
+	v := IndexViewModel{BaseViewModel{Title: "Homepage"}, *posts, flash}
 	v.SetCurrentUser(username)
 	return v
+}
+
+// CreatePost func
+func CreatePost(username, post string) error {
+	u, _ := model.GetUserByUsername(username)
+	return u.CreatePost(post)
 }
 
 //func (IndexViewModelOp) GetVM() IndexViewModel {

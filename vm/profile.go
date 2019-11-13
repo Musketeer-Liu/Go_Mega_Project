@@ -8,6 +8,7 @@ import (
 type ProfileViewModel struct {
 	BaseViewModel
 	Posts			[]model.Post
+	Editable		bool
 	ProfileUser		model.User
 }
 
@@ -24,6 +25,7 @@ func (ProfileViewModelOp) GetVM(sUser, pUser string) (ProfileViewModel, error) {
 	}
 	posts, _ := model.GetPostsByUserID(u1.ID)
 	v.ProfileUser = *u1
+	v.Editable = (sUser == pUser)
 	v.Posts = *posts
 	v.SetCurrentUser(sUser)
 	return v, nil

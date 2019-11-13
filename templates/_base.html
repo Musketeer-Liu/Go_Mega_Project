@@ -1,17 +1,22 @@
-<html lang="en">
+<html>
     <head>
         {{if .Title}}
-        <title>{{.Title}} - blog</title>
+            <title>{{.Title}} - blog</title>
         {{else}}
-        <title>Welcome to blog!</title>
+            <title>Welcome to blog!</title>
         {{end}}
     </head>
     <body>
         <div>
             Blog:
             <a href="/">Home</a>
-            <a href="/login">Login</a>
+            {{ if .CurrentUser }}
+                <a href="/logout">Logout</a>
+            {{ else }}
+                <a href="/login">Login</a>
+            {{ end }}
         </div>
-        {{template "content" .}}
+
+    {{template "content" .}}
     </body>
 </html>

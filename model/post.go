@@ -8,7 +8,6 @@ import (
 type Post struct {
 	ID				int			`gorm:"primary_key"`
 	UserID			int
-	//User // 这里可以采用匿名简化 不用写User User HTML模板中也可以不用再写.User了
 	User 			User
 	Body 			string		`gorm:"type:varchar(180)"`
 	Timestamp		*time.Time	`sql:"DEFAULT:current_timestamp"`

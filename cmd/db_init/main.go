@@ -1,10 +1,10 @@
 package main
 
 import (
+	"log"
+
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/musketeer-liu/Go_Mega_Project/model"
-
-	"log"
 )
 
 func main() {

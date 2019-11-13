@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gorilla/context"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/musketeer-liu/Go_Mega_Project/controller"
 	"github.com/musketeer-liu/Go_Mega_Project/model"
@@ -18,6 +19,6 @@ func main() {
 	// Setup Controller
 	controller.Startup()
 
-	fmt.Print("stating ...")
-	http.ListenAndServe(":8888", nil)
+	fmt.Print("starting ...")
+	http.ListenAndServe(":8888", context.ClearHandler(http.DefaultServeMux))
 }

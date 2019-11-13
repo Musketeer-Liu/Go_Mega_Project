@@ -8,3 +8,5 @@ mail:
   smtp-port: 587
   user: User
   passord: pwd
+server:
+  url: http://127.0.0.1:8888

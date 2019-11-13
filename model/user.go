@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"time"
+
+	jwt "github.com/dgrijalva/jwt-go"
 )
 
 // User struct
@@ -174,3 +176,48 @@ func (u *User) FollowingPostsByPageAndLimit(page, limit int) (*[]Post, int, erro
 	db.Model(&Post{}).Where("user_id in (?)", ids).Count(&total)
 	return &posts, total, nil
 }
+
+// GenerateToken func
+// 密钥 secret 这里直接写在代码里，其实更优还是通过配置文件配置
+func (u *User) GenerateToken() (string, error) {
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"username":	u.Username,
+		"exp":		time.Now().Add(time.Hour * 2).Unix(),	//可以添加过期时间
+	})
+	return token.SignedString([]byte("secret"))
+}
+
+// CheckToken func
+func CheckToken(tokenString string) (string, error) {
+	toekn, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		// Don't forget to validate the alg is what you expect
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+
+		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
+		return []byte("secret"), nil
+	})
+
+	if claims, ok := toekn.Claims.(jwt.MapClaims); ok && toekn.Valid {
+		return claims["username"].(string), nil
+	} else {
+		return "", err
+	}
+}
+
+// GetUserByEmail func
+func GetUserByEmail(email string) (*User, error) {
+	var user User
+	if err := db.Where("email=?", email).Find(&user).Error; err != nil {
+		return nil, err
+	}
+	return &user, nil
+}
+
+// UpdatePassword func
+func UpdatePassword(username, password string) error {
+	contents := map[string]interface{}{"password_hash": Md5(password)}
+	return UpdateUserByUsername(username, contents)
+}
+

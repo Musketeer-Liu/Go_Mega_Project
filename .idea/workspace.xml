@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5323a0a4-7fb0-4633-ab10-2845b33c6c6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/content/profile_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm/profile_edit.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/db_init/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/db_init/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/g.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/g.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/home.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/middle.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/middle.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/content/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/content/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vm/profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/vm/profile.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

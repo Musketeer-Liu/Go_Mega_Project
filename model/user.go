@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"log"
 	"time"
 )
 
@@ -52,7 +53,10 @@ func AddUser(username, password, email string) error {
 	user := User{Username: username, Email: email}
 	user.SetPassword(password)
 	user.SetAvatar(email)
-	return db.Create(&user).Error
+	if err := db.Create(&user).Error; err != nil {
+		return err
+	}
+	return user.FollowSelf()
 }
 
 // UpdateUserbyUsername func
@@ -74,4 +78,86 @@ func UpdateLastSeen(username string) error {
 func UpdateAboutMe(username, text string) error {
 	contents := map[string]interface{}{"about_me": text}
 	return UpdateUserByUsername(username, contents)
+}
+
+
+// Follow func
+// follow someone user_id other.id follow_id u.id
+// 这里 Followers 可以通过 Gorm 的 Association("Followers")来实现， Following 好像不支持 需要自己实现
+func (u *User) Follow(username string) error {
+	other, err := GetUserByUsername(username)
+	if err != nil {
+		return err
+	}
+	return db.Model(other).Association("Followers").Append(u).Error
+}
+
+// Unfollow func
+func (u *User) Unfollow(username string) error {
+	other, err := GetUserByUsername(username)
+	if err != nil {
+		return err
+	}
+	return db.Model(other).Association("Followers").Delete(u).Error
+}
+
+// FollowSelf func
+func (u *User) FollowSelf() error {
+	return db.Model(u).Association("Followers").Append(u).Error
+}
+
+// FollowersCount func
+func (u *User) FollowersCount() int {
+	return db.Model(u).Association("Followers").Count()
+}
+
+// FollowingIDs func
+func (u *User) FollowingIDs() []int {
+	var ids []int
+	rows, err := db.Table("follower").Where("follower_id=?", u.ID).Select("user_id, follower_id").Rows()
+	if err != nil {
+		log.Println("Counting Following error:", err)
+		return ids
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id, followerID int
+		rows.Scan(&id, &followerID)
+		ids = append(ids, id)
+	}
+	return ids
+}
+
+// FollowingCount func
+func (u *User) FollowingCount() int {
+	ids := u.FollowingIDs()
+	return len(ids)
+}
+
+// FollowingPosts func
+func (u *User) FollowingPosts() (*[]Post, error) {
+	var posts []Post
+	ids := u.FollowingIDs()
+	if err := db.Preload("User").Order("timestamp desc").Where("user_id in (?)", ids).Find(&posts).Error; err != nil {
+		return nil, err
+	}
+	return &posts, nil
+}
+
+// IsFollowedByUser func
+func (u *User) IsFollowedByUser(username string) bool {
+	user, _ := GetUserByUsername(username)
+	ids := user.FollowingIDs()
+	for _, id := range ids {
+		if u.ID == id {
+			return true
+		}
+	}
+	return false
+}
+
+// CreatePostfunc
+func (u *User) CreatePost(body string) error {
+	post := Post{Body: body, UserID: u.ID}
+	return db.Create(&post).Error
 }

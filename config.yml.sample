@@ -3,3 +3,8 @@ mysql:
   db: dbname
   host: localhost
   user: root
+mail:
+  smtp: smtp-server
+  smtp-port: 587
+  user: User
+  passord: pwd

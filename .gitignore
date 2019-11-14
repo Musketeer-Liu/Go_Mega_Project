@@ -1,4 +1,6 @@
 config.yml
-*.idea
 *.history
 *.xml
+
+.idea/
+app/

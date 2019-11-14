@@ -76,6 +76,12 @@ func UpdateLastSeen(username string) error {
 	return UpdateUserByUsername(username, contents)
 }
 
+// Date and Time
+// FormattedLastSeen func
+func (u *User) FormattedLastSeen() string {
+	return u.LastSeen.Format("2006-01-02 15:04:05")
+}
+
 // UpdateAboutMe func
 func UpdateAboutMe(username, text string) error {
 	contents := map[string]interface{}{"about_me": text}

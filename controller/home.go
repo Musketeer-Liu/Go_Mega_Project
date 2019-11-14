@@ -20,6 +20,7 @@ func (h home) registerRoutes() {
 	r.HandleFunc("/login", loginHandler)
 	r.HandleFunc("/register", registerHandler)
 	r.HandleFunc("/user/{username}", middleAuth(profileHandler))
+	r.HandleFunc("/user/{username}/popup", middleAuth(popupHandler))
 	r.HandleFunc("/follow/{username}", middleAuth(followHandler))
 	r.HandleFunc("/unfollow/{username}", middleAuth(unFollowHandler))
 	r.HandleFunc("/profile_edit", middleAuth(profileEditHandler))
@@ -308,6 +309,20 @@ func notfoundHandler(w http.ResponseWriter, r *http.Request) {
 	tpl.Execute(w, &message)
 }
 
+func popupHandler(w http.ResponseWriter, r *http.Request) {
+	tpName := "popup.html"
+	vars := mux.Vars(r)
+	pUser := vars["username"]
+	sUser, _ := getSessionUser(r)
+	vop := vm.ProfileViewModelOp{}
+	v, err := vop.GetPopupVM(sUser, pUser)
+	if err != nil {
+		msg := fmt.Sprintf("user ( %s) does not exist", pUser)
+		w.Write([]byte(msg))
+		return
+	}
+	templates[tpName].Execute(w, &v)
+}
 
 
 //// Move all checking func into utils

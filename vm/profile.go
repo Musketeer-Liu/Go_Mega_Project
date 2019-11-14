@@ -59,3 +59,32 @@ func UnFollow(a, b string) error {
 	}
 	return u.Unfollow(b)
 }
+
+// 由于Popup的 viewmodel 和 Profile 的相似，我们直接在 vm/profile.go中加入 GetPopupVM 来获得 Popup 的 vm
+// GetPopupVM func
+func (ProfileViewModelOp) GetPopupVM(sUser, pUser string) (ProfileViewModel, error) {
+	v := ProfileViewModel{}
+	v.SetTitle("Profile")
+	u, err := model.GetUserByUsername(pUser)
+	if err != nil {
+		return v, err
+	}
+	v.ProfileUser = *u
+	v.Editable = (sUser == pUser)
+	if !v.Editable {
+		v.IsFollow = u.IsFollowedByUser(sUser)
+	}
+	v.FollowersCount = u.FollowersCount()
+	v.FollowingCount = u.FollowingCount()
+	v.SetCurrentUser(sUser)
+	return v, nil
+}
+
+
+
+
+
+
+
+
+

@@ -1,28 +1,29 @@
-{{ define "content" }}
+{{define "content"}}
+
     <table>
         <tr valign="top">
-            <td><img src="{{ .ProfileUser.Avatar}}&s=128"></td>
+            <td><img src="{{.ProfileUser.Avatar}}&s=128"></td>
             <td>
-                <h1>User: {{ .ProfileUser.Username}}</h1>
-                {{if .ProfileUser.AboutMe }}
+                <h1>User: {{.ProfileUser.Username}}</h1>
+                {{if .ProfileUser.AboutMe}}
                     <p><pre>{{ .ProfileUser.AboutMe }}</pre></p>
-                {{ end }}
+                {{end}}
 
-                {{if .ProfileUser.LastSeen }}
+                {{if .ProfileUser.LastSeen}}
                     <p>Last seen on: {{ .ProfileUser.FormattedLastSeen }}</p>
                 {{end}}
 
-                <p>{{ .FollowersCount }} followers, {{ .FollowingCount }} following</p>
+                <p>{{ .FollowersCount }} followers, {{ .FollowingCount }} following.</p>
 
-                {{ if .Editable }}
-                    <p><a href="/profile_edit">Edit your profile</a> </p>
-                {{ else }}
-                    {{ if .IsFollow }}
-                        <p><a href="/unfollow/{{.ProfileUser.Username}}">Unfollow</a></p>
-                    {{ else }}
-                        <p><a href="/follow/{{.ProfileUser.Username}}">Follow</a></p>
-                    {{ end }}
-                {{ end }}
+                {{if .Editable}}
+                    <p><a href="/profile_edit">Edit your profile</a></p>
+                {{else}}
+                    {{if .IsFollow}}
+                        <p><a  class="btn btn-outline-primary" href="/unfollow/{{.ProfileUser.Username}}">Unfollow</a></p>
+                    {{else}}
+                        <p><a  class="btn btn-outline-primary" href="/follow/{{.ProfileUser.Username}}">Follow</a></p>
+                    {{end}}
+                {{end}}
             </td>
         </tr>
     </table>
@@ -33,7 +34,7 @@
         <table class="table table-hover">
             <tr valign="top">
                 <td width="36px"><img src="{{.User.Avatar}}&s=36"></td>
-                <td><a href="/user/{{.User.Username}}">{{ .User.Username }}</a> said {{.FormattedTimeAgo}}:<br>{{ .Body }}</td>
+                <td><span class="user_popup"><a href="/user/{{.User.Username}}">{{ .User.Username }}</a></span> said {{.FormattedTimeAgo}}:<br>{{ .Body }}</td>
             </tr>
         </table>
     {{end}}
@@ -66,8 +67,8 @@
                     </a>
                 </li>
             {{ end }}
-            ​
+
         </ul>
     </nav>
 
-{{ end }}
+{{end}}

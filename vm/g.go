@@ -1,5 +1,7 @@
 package vm
 
+import "strings"
+
 // BaseViewModel struct
 type BaseViewModel struct {
 	Title		string
@@ -22,7 +24,7 @@ func (v *BaseViewModel) SetTitle(title string) {
 
 // SetCurrentuser func
 func (v *BaseViewModel) SetCurrentUser(username string) {
-	v.CurrentUser= username
+	v.CurrentUser= strings.ToUpper(username)
 }
 
 // SetPrevAndNextPage func

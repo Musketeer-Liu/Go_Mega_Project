@@ -2,6 +2,7 @@ package vm
 
 import (
 	"github.com/musketeer-liu/Go_Mega_Project/model"
+	"strings"
 )
 
 // ProfileViewModel struct
@@ -70,7 +71,7 @@ func (ProfileViewModelOp) GetPopupVM(sUser, pUser string) (ProfileViewModel, err
 		return v, err
 	}
 	v.ProfileUser = *u
-	v.Editable = (sUser == pUser)
+	v.Editable = (strings.ToLower(sUser) == strings.ToLower(pUser))
 	if !v.Editable {
 		v.IsFollow = u.IsFollowedByUser(sUser)
 	}

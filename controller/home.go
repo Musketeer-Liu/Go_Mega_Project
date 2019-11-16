@@ -67,7 +67,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	v := vop.GetVM()
 
 	if r.Method == http.MethodGet {
-		templates[tpName].Execute(w, &w)
+		templates[tpName].Execute(w, &v)
 	}
 	if r.Method == http.MethodPost {
 		r.ParseForm()

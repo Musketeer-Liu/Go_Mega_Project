@@ -137,8 +137,8 @@ func checkPassword(password string) string {
 
 // Data Check
 func checkEmail(email string) string {
-	if m, _ := regexp.MatchString(`^([\w\.\_]{2,10})@(\w{1,}).([a-z]{2,4})$`, email); !m {
-		return fmt.Sprintf("Email field not a valid email")
+	if m, _ := regexp.MatchString(`^([\w\.\_]{2,20})@(\w{1,}).([a-z]{2,4})$`, email); !m {
+		return fmt.Sprintf("Email field not a valid email. Email length from 2 to 20 letters.")
 	}
 	return ""
 }

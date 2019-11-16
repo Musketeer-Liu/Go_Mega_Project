@@ -48,6 +48,7 @@ func GetUserByUsername(username string) (*User, error) {
 // SetAvatar func
 func (u *User) SetAvatar(email string) {
 	u.Avatar = fmt.Sprint("https://www.gravatar.com/avatar/%s?d=identicon", Md5(email))
+	u.Avatar = "https://previews.123rf.com/images/patrimonio/patrimonio1611/patrimonio161100068/68286562-drawing-sketch-style-illustration-of-a-head-of-a-blonde-caucasian-toddler-smiling-viewed-from-front-.jpg"
 }
 
 // AddUser func

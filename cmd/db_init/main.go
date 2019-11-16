@@ -18,11 +18,20 @@ func main() {
 	db.DropTableIfExists(model.User{}, model.Post{}, "follower")
 	db.CreateTable(model.User{}, model.Post{})
 
-	model.AddUser("Musketeer", "abc123", "musketeer@test.com")
+	model.AddUser("Musketeer", "abc123", "musketeer.liu@gmail.com")
 	model.AddUser("Paladin", "abc123", "paladin@test.com")
 
 	u1, _ := model.GetUserByUsername("musketeer")
 	u1.CreatePost("Beautiful day in Portland")
+	u1.CreatePost("Beautiful day in California")
+	u1.CreatePost("Beautiful day in Texas")
+	u1.CreatePost("Beautiful day in New York")
+	u1.CreatePost("Beautiful day in Arizona")
+	u1.CreatePost("Beautiful day in Illinois")
+	u1.CreatePost("Beautiful day in Shanghai")
+	u1.CreatePost("Beautiful day in Beijing")
+	u1.CreatePost("Beautiful day in Guangdong")
+	u1.CreatePost("Beautiful day in Hongkong")
 	model.UpdateAboutMe(u1.Username, `I'm the author of this Go Mega Project`)
 
 	u2, _ := model.GetUserByUsername("paladin")

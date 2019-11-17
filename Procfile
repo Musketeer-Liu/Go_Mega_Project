@@ -1,1 +1,1 @@
-web: go-mega-code
+web: go-mega-project

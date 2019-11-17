@@ -2,15 +2,14 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
-	"os"
-
 	"github.com/gorilla/context"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/musketeer-liu/Go_Mega_Project/controller"
 	"github.com/musketeer-liu/Go_Mega_Project/model"
+	"log"
+	"net/http"
+	"os"
 )
 
 func main() {

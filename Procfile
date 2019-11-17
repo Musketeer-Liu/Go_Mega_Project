@@ -1,1 +1,1 @@
-web: go-mega-project
+web: Go_Mega_Project

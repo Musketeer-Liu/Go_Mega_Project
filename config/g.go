@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	projectName := "go-mega-project"
+	projectName := "Go_Mega_Project"
 	dbType := GetDBType()
 	log.Println("OS DBTYPE:", dbType)
 

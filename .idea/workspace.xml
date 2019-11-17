@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5323a0a4-7fb0-4633-ab10-2845b33c6c6a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build main.go - db init">
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build main.go - db init" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Go_Mega_Project" />
       <working_directory value="$PROJECT_DIR$/" />

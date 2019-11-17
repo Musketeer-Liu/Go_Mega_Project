@@ -25,7 +25,7 @@ func ConnectToDB() *gorm.DB {
 // ConnectToDBByDBType func
 func ConnectToDBByDBType(dbtype, connectingStr string) *gorm.DB {
 	log.Println("DB Type:", dbtype, "\n Cnnect to db...")
-	db, err := gorm.Open("mysql", connectingStr)
+	db, err := gorm.Open(dbtype, connectingStr)
 	if err != nil {
 		panic("Failed to connect database")
 	}

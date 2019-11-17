@@ -167,6 +167,11 @@ func (u *User) IsFollowedByUser(username string) bool {
 
 // CreatePostfunc
 func (u *User) CreatePost(body string) error {
+	log.Println("body: " + body)
+	if (u == nil) {
+		log.Println("user is nil")
+	}
+	log.Println("UserID: " + string(u.ID))
 	post := Post{Body: body, UserID: u.ID}
 	return db.Create(&post).Error
 }

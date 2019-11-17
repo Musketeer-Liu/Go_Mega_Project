@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	projectName := "go_mega"
+	projectName := "go-mega-project"
 	dbType := GetDBType()
 	log.Println("OS DBTYPE:", dbType)
 
@@ -59,7 +59,7 @@ func GetHerokuConnectingString() string {
 // GetSMTPConfig func
 func GetSMTPConfig() (server string, port int, user, pwd string) {
 	if IsHeroku() {
-		server = os.Getenv("MAIL_SMTP")
+		server = os.Getenv("F")
 		port, _ = strconv.Atoi(os.Getenv("MAIL_SMTP_PORT"))
 		user = os.Getenv("MAIL_USER")
 		pwd = os.Getenv("MAIL_PASSWORD")

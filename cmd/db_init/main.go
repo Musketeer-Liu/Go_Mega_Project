@@ -21,7 +21,7 @@ func main() {
 	model.AddUser("Musketeer", "abc123", "musketeer.liu@gmail.com")
 	model.AddUser("Paladin", "abc123", "paladin@test.com")
 
-	u1, _ := model.GetUserByUsername("musketeer")
+	u1, _ := model.GetUserByUsername("Musketeer")
 	u1.CreatePost("Beautiful day in Portland")
 	u1.CreatePost("Beautiful day in California")
 	u1.CreatePost("Beautiful day in Texas")
@@ -34,7 +34,7 @@ func main() {
 	u1.CreatePost("Beautiful day in Hongkong")
 	model.UpdateAboutMe(u1.Username, `I'm the author of this Go Mega Project`)
 
-	u2, _ := model.GetUserByUsername("paladin")
+	u2, _ := model.GetUserByUsername("Paladin")
 	u2.CreatePost("The Avengers movie was so cool!")
 	u2.CreatePost("Sun shine is beautiful")
 

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5323a0a4-7fb0-4633-ab10-2845b33c6c6a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/db_init/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/db_init/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/g.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/g.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/g.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/g.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,10 +71,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build main.go">
-    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="go build main.go - db init" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="Go_Mega_Project" />
       <working_directory value="$PROJECT_DIR$/" />
+      <envs>
+        <env name="DBTYPE" value="heroku" />
+        <env name="DATABASE_URL" value="postgres://mhlawhxfvoefja:055044ee4d4a6a4fe1323acceb1b7b7be72e086e34dc5df4d0b3f6a63d9b635a@ec2-54-204-37-92.compute-1.amazonaws.com:5432/d8fuiuksui3sgj" />
+      </envs>
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/cmd/db_init/main.go" />
       <package value="github.com/musketeer-liu/Go_Mega_Project" />
@@ -84,14 +93,10 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Go Build.go build main.go" />
-      <item itemvalue="Go Build.go build main.go (1)" />
-    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go - db init" />
         <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="Go Build.go build main.go (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -153,6 +158,31 @@
           <url>file://$PROJECT_DIR$/controller/utils.go</url>
           <line>274</line>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/db_init/main.go</url>
+          <line>13</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/db_init/main.go</url>
+          <line>17</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/model/user.go</url>
+          <line>59</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/db_init/main.go</url>
+          <line>23</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/db_init/main.go</url>
+          <line>40</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
